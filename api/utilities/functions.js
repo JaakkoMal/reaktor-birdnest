@@ -67,7 +67,7 @@ const checkTimeDifference = (sightingTime, timeNow) => {
     console.log("Minutes since last sighting: ", timeSinceLastSighting)
 
     // return false if the time since last sighting is less than 10 minutes and true if the time is less than 10 minutes
-    if(timeSinceLastSighting > 2){
+    if(timeSinceLastSighting > 10){
         return false
     } else {
         return true
