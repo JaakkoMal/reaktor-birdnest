@@ -24,13 +24,14 @@ app.get('/', (req, res) => {
         detectedDrones.forEach(drone => {
             drone.timestamp = timestamp
             drone.distanceFromTheNest = calculateDistanceFromTheNest(drone)
+            drone.closestDistance = drone.distanceFromTheNest
         })
         let updatedDroneInfo = []
         updatedDroneInfo = compareDetectedToPrevious(detectedDrones, drones)
         updatedDroneInfo = updatedDroneInfo.filter(drone => checkTimeDifference(drone.timestamp, timestamp) === true)
         drones = updatedDroneInfo
-        console.log("DRONES NOW: ", drones)
-        res.send(drones)
+        console.log("DRONES NOW: ", updatedDroneInfo)
+        res.send(updatedDroneInfo)
     })
    }).catch(error => {
     res.json(error)
