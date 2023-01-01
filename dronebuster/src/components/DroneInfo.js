@@ -11,13 +11,22 @@ export default function DroneInfo({drones, badGuys}) {
      <div className='droneInfoContainer'>
           {
             drones.sort((drone1, drone2) => new Date(drone2.timestamp) - new Date(drone1.timestamp)).map(drone => (
-              <div className='infoBox'> 
-                <ul key={drone.serialNumber}>
+              <div key={drone.serialNumber} className='infoBox'> 
+                    <ul>
                         <h3>{drone.model}</h3>
                         <li>Serial number: <b>{drone.serialNumber}</b></li>
                         <li>Last spotted: <b>{drone.timestamp}</b></li>
                         <li>Last distance: <b>{drone.distanceFromTheNest.toFixed(2)}m</b></li>
                         <li>Closest to the nest: <b>{drone.closestDistance.toFixed(2)}m</b></li>
+                        {drone.isViolator && (
+                          <div style={{backgroundColor: 'red'}}>
+                            <h4>VIOLATOR</h4>
+                            <p><b>{drone.ownerInfo[0]} {drone.ownerInfo[1]}</b></p>
+                            <p><b>{drone.ownerInfo[2]}</b></p>
+                            <p><b>{drone.ownerInfo[3]}</b></p>
+                          </div>
+                        )}
+                        
                     </ul>
               </div>      
             ))

@@ -27,12 +27,16 @@ app.get('/drones', (req, res) => {
             drone.distanceFromTheNest = calculateDistanceFromTheNest(drone)
             drone.closestDistance = drone.distanceFromTheNest
         })
-        let updatedDroneInfo = []
-        updatedDroneInfo = compareDetectedToPrevious(detectedDrones, drones)
-        updatedDroneInfo = updatedDroneInfo.filter(drone => checkTimeDifference(drone.timestamp, timestamp) === true)
-        drones = updatedDroneInfo
-        console.log("DRONES NOW: ", updatedDroneInfo)
-        res.send(updatedDroneInfo)
+        if(drones.length === 0){
+            drones = detectedDrones
+        } else {
+            let updatedDroneInfo = []
+            updatedDroneInfo = compareDetectedToPrevious(detectedDrones, drones)
+            updatedDroneInfo = updatedDroneInfo.filter(drone => checkTimeDifference(drone.timestamp, timestamp) === true)
+            drones = updatedDroneInfo
+        }
+        console.log("DRONES NOW: ", drones)
+        res.send(drones)
     })
    }).catch(error => {
     res.json(error)
@@ -41,7 +45,7 @@ app.get('/drones', (req, res) => {
 
 app.get('/pilots/:serialNumber', (req, res) => {
     axios.get(`https://assignments.reaktor.com/birdnest/pilots/${req.params.serialNumber}`)
-    .then(response => res.send(response.data) )
+    .then(response => res.send(response.data))
 })
 
 app.listen(PORT, () => {
