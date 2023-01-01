@@ -11,42 +11,38 @@ const calculateDistanceFromTheNest = (drone) => {
 }
 
 const compareDetectedToPrevious = (current, prev) => {
-
-    if(prev.length > 0){ // check if historical drone info exists and if so... (else see else-statement)
-                                    // Loop through the drones detected in the latest "pulse"
-        current.forEach(drone => {  // and check if there are drones that are already on the list of detected drones
+        current.forEach(drone => { 
             let droneIndex = prev.findIndex(i => drone.serialNumber[0] === i.serialNumber[0])
                                     
-            if(droneIndex !== -1){  // If a drone already exists on the list, it gets updated
-                let prevToUpdate = {...prev[droneIndex]} // A copy of the info from the previous sighting
+            if(droneIndex !== -1){  
+                let prevToUpdate = {...prev[droneIndex]} 
                 
-                if(prevToUpdate.closestDistance){       // If the info from the previous sighting contains closest distance
+                if(prevToUpdate.closestDistance){      
                     console.log("updating distance")
                     let updatedDrone;                   
-                    if(prevToUpdate.closestDistance < drone.distanceFromTheNest){   // if the previous closest distance is shorter than the current distance
-                                                                                    // then drone info is updated, but the closest distance remains from previous sighting 
+                    if(prevToUpdate.closestDistance < drone.distanceFromTheNest){
                         updatedDrone = {...drone, closestDistance : prevToUpdate.closestDistance}
-                        prev[droneIndex] = updatedDrone
+                        //prev[droneIndex] = updatedDrone
                         console.log("Drone distance updated for ", prev[droneIndex])
-                    } else {                                                        // if the previous closest distance is greater than the current distance
-                        updatedDrone = {...drone, closestDistance : drone.distanceFromTheNest} // the closest distance is updated
-                        prev[droneIndex] = updatedDrone
+                    } else {                                                      
+                        updatedDrone = {...drone, closestDistance : drone.distanceFromTheNest} 
+                        //prev[droneIndex] = updatedDrone
                     }
+                    if(updatedDrone.closestDistance <= 100 && !updatedDrone.isViolator){
+                        updatedDrone.isViolator = true
+                    }
+                    prev[droneIndex] = updatedDrone
                 }
-            } else {                                                // if the drone is sighted for the first time
-                drone.closestDistace = drone.distanceFromTheNest    // the current distance is set as the closest distance
+            } else {                                                
+                drone.closestDistance = drone.distanceFromTheNest    
+                if(drone.closestDistance <= 100 && !drone.isViolator){
+                    drone.isViolator = true
+                }
                 prev.push(drone)
             }
         })
-        return prev     // return the updated drones
-    } else {
-                        // return the sighted drones with the closest distance set as the current distance
-        current.forEach(drone => {
-            drone.closestDistance = drone.distanceFromTheNest
-        })
-        return current
-    }
-}
+        return prev
+    } 
 
 const checkTimeDifference = (sightingTime, timeNow) => {
     // turn both the last time of sighting and current time into seconds
