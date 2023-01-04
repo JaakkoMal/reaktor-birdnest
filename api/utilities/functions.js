@@ -45,6 +45,19 @@ const compareDetectedToPrevious = (current, prev) => {
     } 
 
 const checkTimeDifference = (sightingTime, timeNow) => {
+    let sightingTimeInSeconds = sightingTime.getTime() / 1000
+    let timeNowInSeconds = timeNow.getTime() / 1000
+    let timeDifference = (timeNowInSeconds - sightingTimeInSeconds) / 60 
+
+    if(timeDifference > 1){
+        return false
+    } else {
+        return true
+    }
+    
+}    
+
+/*const checkTimeDifference = (sightingTime, timeNow) => {
     // turn both the last time of sighting and current time into seconds
     let timeNowSplitted = timeNow.slice(11, timeNow.length - 5).split(':')
     let timeNowHoursInSeconds = (Number(timeNowSplitted[0]) * 3600)
@@ -69,7 +82,7 @@ const checkTimeDifference = (sightingTime, timeNow) => {
         return true
     }
 
-}
+}*/
 
 module.exports = {
     calculateDistanceFromTheNest,
