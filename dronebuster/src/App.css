@@ -29,10 +29,29 @@ nav > h1 {
   margin-bottom: 20px;
 }
 
+.violatorInfoContainer {
+  background-color:rgba(234, 234, 217, 0.815);
+  border: 2px solid rgb(248, 4, 4);
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 10px;
+}
+
+.violatorInfoContainer h4 {
+  color: rgb(205, 48, 48);
+  font-family: 'Courier New';
+}
+.violatorInfoContainer p {
+  font-family: 'Courier New'
+}
+
 h3 {
   color:#f1ce32;
+  font-family: 'Courier New'
 }
 
 li {
   color: rgba(194, 194, 67, 0.815);
+  font-family: 'Courier New';
 }

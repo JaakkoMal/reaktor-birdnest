@@ -34,6 +34,7 @@ export default function DroneInfoContainer() {
               drone.ownerInfo = getOwnerInfo(drone.serialNumber[0])
               console.log("OWN" ,drone.ownerInfo)
               console.log("Adding owner info")
+              console.log("DRONE TIMESTAMP: ", typeof drone.timestamp)
             }
           } else {
             drone.ownerInfo = newDrones[droneIndex].ownerInfo
