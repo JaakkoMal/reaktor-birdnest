@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useState, Link } from 'react'
+import Visualization from './Visualization'
 
 export default function DroneInfo({drones, badGuys}) {
 
+  const [showChart, setShowChart] = useState(false)
+ 
+  const toggleChart = () => {
+    setShowChart(prev => !prev)
+  }
   
   return (
     <div className='container'>
       <nav>
         <h1>Reaktor Birdnest Pre-assignment</h1>
       </nav>
+      <button as={Link} onClick={toggleChart}>SHOW RADAR</button>
+      {showChart && (
+        <div className='chartContainer'>
+        <Visualization drones={drones}/>
+        </div>
+      )}
+      
      <div className='droneInfoContainer'>
           {
             drones.sort((drone1, drone2) => new Date(drone2.timestamp) - new Date(drone1.timestamp)).map(drone => (

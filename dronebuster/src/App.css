@@ -11,6 +11,23 @@ nav > h1 {
   font-size: 42px;
 }
 
+button {
+  background-color: black;
+  color: green;
+  border-radius: 5px;
+  font-family: 'Courier New';
+  font-size: 20px;
+}
+
+.chartContainer {
+  display: flex;
+  width: 500px;
+  height: 500px;
+  background-color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
