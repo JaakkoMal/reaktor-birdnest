@@ -20,8 +20,19 @@ button {
   cursor: pointer;
 }
 
-.chartContainer {
+.radarInfo {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.radarInfo p {
+  color:rgba(194, 194, 67, 0.815);
+  margin: 0;
+}
+
+.chartContainer {
   width: 500px;
   height: 500px;
   background-color: black;

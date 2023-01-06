@@ -7,7 +7,6 @@ const pilotURL = 'http://localhost:8080/pilots/'
 export default function DroneInfoContainer() {
 
   const [ drones, setDrones ] = useState([])   
-  const [ badGuys, setBadGuys ] = useState([])
 
   const getOwnerInfo = (serialNumber) => {
     let ownerInfo = []

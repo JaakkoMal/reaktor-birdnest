@@ -1,5 +1,5 @@
 import React from 'react'
-import { Chart as ChartJS, LinearScale, PointElement, LineElement, Tooltip, Legend,} from 'chart.js';
+import { Chart as ChartJS, LinearScale, PointElement, LineElement, Tooltip } from 'chart.js';
 import { Scatter } from 'react-chartjs-2';
 
 
@@ -51,14 +51,17 @@ export default function Visualization({drones}) {
         }
     ]
     drones.forEach(drone => {
-        dronePositions.push({
-            label: drone.model,
-            data: [{
-                x: Number(drone.positionX),
-                y: Number(drone.positionY)
-            }],
-            backgroundColor: 'rgba(255, 99, 132, 1)',
-        })
+        if(drone.timestamp === drones[0].timestamp){
+            dronePositions.push({
+                label: drone.model,
+                data: [{
+                    x: Number(drone.positionX),
+                    y: Number(drone.positionY)
+                }],
+                backgroundColor: 'rgba(255, 99, 132, 1)',
+            })
+        }
+        
     })
 
     const data = {

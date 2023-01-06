@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 8080;
 const { calculateDistanceFromTheNest, compareDetectedToPrevious, checkTimeDifference } = require('./utilities/functions')
 
 const droneURL = 'https://assignments.reaktor.com/birdnest/drones'
-const pilotURL = 'https://assignments.reaktor.com/birdnest/pilots'
 
 app.use(cors({
     origin: '*'
@@ -51,6 +50,7 @@ app.get('/drones', (req, res) => {
 app.get('/pilots/:serialNumber', (req, res) => {
     axios.get(`https://assignments.reaktor.com/birdnest/pilots/${req.params.serialNumber}`)
     .then(response => res.send(response.data))
+    .catch(err => console.log(err))
 })
 
 app.listen(PORT, () => {

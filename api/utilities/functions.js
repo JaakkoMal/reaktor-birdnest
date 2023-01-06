@@ -49,7 +49,7 @@ const checkTimeDifference = (sightingTime, timeNow) => {
     let timeNowInSeconds = timeNow.getTime() / 1000
     let timeDifference = (timeNowInSeconds - sightingTimeInSeconds) / 60 
 
-    if(timeDifference > 1){
+    if(timeDifference > 10){
         return false
     } else {
         return true
@@ -57,32 +57,6 @@ const checkTimeDifference = (sightingTime, timeNow) => {
     
 }    
 
-/*const checkTimeDifference = (sightingTime, timeNow) => {
-    // turn both the last time of sighting and current time into seconds
-    let timeNowSplitted = timeNow.slice(11, timeNow.length - 5).split(':')
-    let timeNowHoursInSeconds = (Number(timeNowSplitted[0]) * 3600)
-    let timeNowMinutesInSeconds = (Number(timeNowSplitted[1]) * 60)
-    let timeNowSeconds = Number(timeNowSplitted[2])
-    let timeNowInSeconds = timeNowHoursInSeconds + timeNowMinutesInSeconds + timeNowSeconds
-
-    let sightingTimeSplitted = sightingTime.slice(11, sightingTime.length - 5).split(':')
-    let sightingHoursInSeconds = (Number(sightingTimeSplitted[0]) * 3600)
-    let sightingMinutesInSeconds = (Number(sightingTimeSplitted[1]) * 60)
-    let sightingSeconds = Number(sightingTimeSplitted[2])
-    let sightingTimeInSeconds = sightingHoursInSeconds + sightingMinutesInSeconds + sightingSeconds
-
-    // calculate the time passed since the last sighting by subtracting the last sighting time from time now
-    let timeSinceLastSighting = (timeNowInSeconds - sightingTimeInSeconds) / 60
-    console.log("Minutes since last sighting: ", timeSinceLastSighting)
-
-    // return false if the time since last sighting is less than 10 minutes and true if the time is less than 10 minutes
-    if(timeSinceLastSighting > 10){
-        return false
-    } else {
-        return true
-    }
-
-}*/
 
 module.exports = {
     calculateDistanceFromTheNest,
