@@ -12,6 +12,7 @@ const droneURL = 'https://assignments.reaktor.com/birdnest/drones'
 app.use(cors({
     origin: '*'
 }))
+app.use(express.static('build'))
 
 let drones = []
 // GET ALL DRONES
