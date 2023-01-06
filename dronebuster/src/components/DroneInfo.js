@@ -1,7 +1,9 @@
 import React, { useState, Link } from 'react'
 import Visualization from './Visualization'
+import {infoText} from '../helpers/InfoText'
 
-export default function DroneInfo({drones, badGuys}) {
+
+export default function DroneInfo({drones}) {
 
   const [showChart, setShowChart] = useState(false)
  
@@ -14,10 +16,13 @@ export default function DroneInfo({drones, badGuys}) {
       <nav>
         <h1>Reaktor Birdnest Pre-assignment</h1>
       </nav>
-      <button as={Link} onClick={toggleChart}>SHOW RADAR</button>
+      <button as={Link} onClick={toggleChart}>{showChart ? 'HIDE RADAR' : 'SHOW RADAR'}</button>
       {showChart && (
+        <div>
+          {infoText}
         <div className='chartContainer'>
         <Visualization drones={drones}/>
+        </div>
         </div>
       )}
       
