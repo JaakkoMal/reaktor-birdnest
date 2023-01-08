@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import DroneInfo from '../components/DroneInfo'
 
-const droneURL = 'http://localhost:8080/drones'
-const pilotURL = 'http://localhost:8080/pilots/'
+
+const droneURL = '/drones'
+const pilotURL = '/pilots/'
 
 export default function DroneInfoContainer() {
 
