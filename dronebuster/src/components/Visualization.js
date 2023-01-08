@@ -53,7 +53,7 @@ export default function Visualization({drones}) {
     drones.forEach(drone => {
         if(drone.timestamp === drones[0].timestamp){
             dronePositions.push({
-                label: drone.model,
+                label: drone.serialNumber,
                 data: [{
                     x: Number(drone.positionX),
                     y: Number(drone.positionY)

@@ -16,8 +16,8 @@ export default function DroneInfo({drones}) {
       <nav>
         <h1>Reaktor Birdnest Pre-assignment</h1>
       </nav>
-      <p>This application shows the information of all the drones inside the detection area from the last 10 minutes.</p>
-      <p>The pilot information of drones that have violated the NDZ can be seen on the drone information box.</p>
+      <p id='info'>This application shows the information of all the drones inside the detection area from the last 10 minutes.</p>
+      <p id='info'>The pilot information of drones that have violated the NDZ can be seen on the drone information box.</p>
       <button onClick={toggleChart}>{showChart ? 'HIDE RADAR' : 'SHOW RADAR'}</button>
       {showChart && (
         <div>
